@@ -1,11 +1,11 @@
 package com.cronparser
 
 interface ResponseBuilder {
-    fun build(entries: List<TableResponseEntry>): Map<String, Any>
+    fun build(entries: List<ResponseEntry>): Map<String, Any>
 }
 
 class TableResponseBuilder : ResponseBuilder {
-    override fun build(entries: List<TableResponseEntry>): Map<String, Any> {
+    override fun build(entries: List<ResponseEntry>): Map<String, Any> {
         val result = mutableMapOf<String, Any>()
         
         entries.forEach { entry ->

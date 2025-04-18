@@ -19,7 +19,7 @@ class MainTest {
             "command" to listOf("/usr/bin/find")
         )
         
-        val result = CronParserMain().parseArgs()
+        val result = CronParserMain().parseArgs("*/15 0 1,15 * 1-5 /usr/bin/find")
         assertTrue(result.contains("minute 0 15 30 45"))
     }
     
@@ -28,7 +28,7 @@ class MainTest {
         mockkConstructor(CronParser::class)
         every { anyConstructed<CronParser>().parse(any()) } throws InvalidCronStringException("Test error")
         
-        val result = CronParserMain().parseArgs()
-        assertTrue(result.contains("InvalidCronExpressionException: Test error"))
+        val result = CronParserMain().parseArgs("1213")
+        assertTrue(result.contains("Test error"))
     }
 }

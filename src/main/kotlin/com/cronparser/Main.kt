@@ -1,22 +1,18 @@
 package com.cronparser
 
+import mu.KotlinLogging
+val logger = KotlinLogging.logger {}
+
 class CronParserMain {
-    fun parseArgs(): String {
-        val args = parseCommandLineArgs()
-        val cronExpression = args.cronExpression
-        
+
+    fun parseArgs(cronExpression: String): String {
         return try {
             val result = CronParser(TableResponseBuilder()).parse(cronExpression)
             formatOutput(result)
         } catch (e: InvalidCronStringException) {
-            e.toString()
+            logger.error {"Error: $e, Invalid CronExpression: $cronExpression"}
+            throw e
         }
-    }
-    
-    private fun parseCommandLineArgs(): Args {
-        // In a real implementation, this would use a library like kotlinx-cli
-        // For simplicity, we'll just return a hardcoded value
-        return Args("*/15 0 1,15 * 1-5 /usr/bin/find")
     }
     
     private fun formatOutput(result: Map<String, Any>): String {
@@ -33,10 +29,9 @@ class CronParserMain {
     }
 }
 
-data class Args(val cronExpression: String)
-
 fun main(args: Array<String>) {
-    val cronExpression = args.firstOrNull() ?: "*/15 0 1,15 * 1-5 /usr/bin/find"
+    val cronExpression = args.joinToString(" ")
+    logger.info {"Cron Expression: $cronExpression"}
     val parser = CronParserMain()
-    println(parser.parseArgs())
+    println(parser.parseArgs(cronExpression))
 }

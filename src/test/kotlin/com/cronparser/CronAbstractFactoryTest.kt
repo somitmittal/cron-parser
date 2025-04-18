@@ -13,7 +13,7 @@ class CronAbstractFactoryTest {
     }
     
     @Test
-    fun `test invalid taxonomy`() {
+    fun `test invalid cron field`() {
         assertFailsWith<InvalidCronStringException> {
             CronAbstractFactory.get("InvalidField")
         }

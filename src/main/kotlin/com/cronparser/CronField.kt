@@ -5,5 +5,6 @@ enum class CronField {
     HOURS,
     DAY_OF_MONTH,
     MONTH,
-    DAY_OF_WEEK
+    DAY_OF_WEEK,
+    YEAR,
 }

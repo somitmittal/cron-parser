@@ -19,8 +19,8 @@ class CronParserTest {
     
     @Test
     fun `test boundary values`() {
-        val facade = CronParser(TableResponseBuilder())
-        val result = facade.parse("59 23 31 12 7 /usr/bin/test")
+        val parser = CronParser(TableResponseBuilder())
+        val result = parser.parse("59 23 31 12 7 /usr/bin/test")
         
         assertEquals(listOf("59"), result["minute"])
         assertEquals(listOf("23"), result["hour"])
