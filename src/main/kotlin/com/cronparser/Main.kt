@@ -17,14 +17,7 @@ class CronParserMain {
     
     private fun formatOutput(result: Map<String, Any>): String {
         val sb = StringBuilder()
-        
-        sb.append("minute ${(result["minute"] as List<*>).joinToString(" ")}\n")
-        sb.append("hour ${(result["hour"] as List<*>).joinToString(" ")}\n")
-        sb.append("day of month ${(result["day_of_month"] as List<*>).joinToString(" ")}\n")
-        sb.append("month ${(result["month"] as List<*>).joinToString(" ")}\n")
-        sb.append("day of week ${(result["day_of_week"] as List<*>).joinToString(" ")}\n")
-        sb.append("command ${(result["command"] as List<*>).first()}\n")
-        
+        result.map { sb.append(it.key + " " + (it.value as List<*>).joinToString(" ") + "\n") }
         return sb.toString()
     }
 }

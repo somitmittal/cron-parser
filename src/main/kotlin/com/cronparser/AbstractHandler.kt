@@ -18,11 +18,11 @@ abstract class AbstractHandler {
         return values.map { it.toString() }
     }
     
-    private fun parseList(field: String): List<Int> {
+    open fun parseList(field: String): List<Int> {
         return field.split(",").flatMap { parse(it) }
     }
     
-    private fun parseRange(field: String): List<Int> {
+    open fun parseRange(field: String): List<Int> {
         val parts = field.split("-")
         if (parts.size != 2) {
             throw InvalidCronStringException("Invalid range format: $field")
@@ -44,7 +44,7 @@ abstract class AbstractHandler {
         return (start..end).toList()
     }
     
-    private fun parseStep(field: String): List<Int> {
+    open fun parseStep(field: String): List<Int> {
         val parts = field.split("/")
         if (parts.size != 2) {
             throw InvalidCronStringException("Invalid step format: $field")
@@ -61,7 +61,7 @@ abstract class AbstractHandler {
         return range.filterIndexed { index, _ -> index % step == 0 }
     }
     
-    private fun parsePlain(field: String): List<Int> {
+    open fun parsePlain(field: String): List<Int> {
         val value = field.toIntOrNull() ?: 
             throw InvalidCronStringException("Invalid field value: $field")
             
