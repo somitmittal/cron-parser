@@ -4,7 +4,6 @@ import io.mockk.every
 import io.mockk.mockkConstructor
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.Test
-import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class MainTest {
