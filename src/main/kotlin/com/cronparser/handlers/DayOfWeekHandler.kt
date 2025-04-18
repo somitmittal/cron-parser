@@ -30,21 +30,6 @@ class DayOfWeekHandler : AbstractHandler() {
             throw InvalidCronStringException("Range values out of bounds: $field")
         }
 
-        val ans = mutableListOf<Int>()
-        if (start > end) {
-         while(start<=max) {
-             ans.add(start)
-             start+=1;
-         }
-            start = end
-            while(start<=end) {
-                ans.add(start)
-                start+=1
-            }
-            ans.sort()
-            return ans
-        }
-
         return (start..end).toList()
     }
 }
