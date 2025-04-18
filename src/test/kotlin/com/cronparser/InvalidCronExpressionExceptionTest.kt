@@ -8,6 +8,6 @@ class InvalidCronExpressionExceptionTest {
     @Test
     fun `test exception message`() {
         val exception = InvalidCronStringException("Test message")
-        assertEquals("InvalidCronExpressionException: Test message", exception.toString())
+        assertEquals("InvalidCronStringException: Test message", exception.toString())
     }
 }

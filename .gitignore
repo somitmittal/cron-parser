@@ -1,8 +1,3 @@
-# Ignore everything
-*
-
-# But not directories (so we can recurse)
-!*/
-
-# Allow .kt files
-!*.kt
+.gradle/
+.idea/
+build/

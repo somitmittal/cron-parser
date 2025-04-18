@@ -2,7 +2,9 @@ package com.cronparser
 
 import io.mockk.every
 import io.mockk.mockkConstructor
+import org.junit.jupiter.api.assertThrows
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class MainTest {
@@ -28,7 +30,9 @@ class MainTest {
         mockkConstructor(CronParser::class)
         every { anyConstructed<CronParser>().parse(any()) } throws InvalidCronStringException("Test error")
         
-        val result = CronParserMain().parseArgs("1213")
-        assertTrue(result.contains("Test error"))
+        val result = assertThrows<InvalidCronStringException>{ CronParserMain().parseArgs("1213") }
+        assertTrue {
+            result.message?.contains("Test error") == true
+        }
     }
 }
