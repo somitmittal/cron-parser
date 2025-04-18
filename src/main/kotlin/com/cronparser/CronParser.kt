@@ -2,14 +2,13 @@ package com.cronparser
 
 import com.cronparser.factories.CronFieldFactory
 
-const val CRON_EXPRESSION_MAX_LENGTH = 7
+const val CRON_EXPRESSION_MAX_LENGTH = 6
 val INDEX_TO_FIELD_MAPPING = mapOf(
     0 to CronField.MINUTES,
     1 to CronField.HOURS,
     2 to CronField.DAY_OF_MONTH,
     3 to CronField.MONTH,
     4 to CronField.DAY_OF_WEEK,
-    5 to CronField.YEAR
 )
 
 class CronParser(private val responseBuilder: ResponseBuilder) {

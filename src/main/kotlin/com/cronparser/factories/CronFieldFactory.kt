@@ -14,7 +14,6 @@ class CronFieldFactory {
                 CronField.DAY_OF_MONTH -> DayOfMonthHandler()
                 CronField.MONTH -> MonthHandler()
                 CronField.DAY_OF_WEEK -> DayOfWeekHandler()
-                CronField.YEAR -> YearHandler()
             }
         } catch (e: IllegalArgumentException) {
             throw InvalidCronStringException("Invalid field type: $fieldType")

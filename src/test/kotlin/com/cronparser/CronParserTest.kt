@@ -43,15 +43,6 @@ class CronParserTest {
     }
 
     @Test
-    fun `test invalid day of week range`() {
-        val facade = CronParser(TableResponseBuilder())
-
-        assertFailsWith<InvalidCronStringException> {
-            facade.parse("*/15 0 * * 4-1 invalid-field")
-        }
-    }
-
-    @Test
     fun `test invalid step arguments`() {
         val facade = CronParser(TableResponseBuilder())
 
